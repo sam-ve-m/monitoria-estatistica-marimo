@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8" />
+<title>Monitoria de Estatística UTFPR — notebooks interativos</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 640px; margin: 48px auto; padding: 0 16px; color: #222; }
+  h1 { font-size: 1.4rem; }
+  ul { line-height: 2.2; }
+  a { color: #2563eb; }
+  p.note { color: #666; font-size: 0.9rem; }
+</style>
+</head>
+<body>
+<h1>Monitoria de Estatística — Piloto marimo</h1>
+<p>Notebooks interativos (ipywidgets originais, reescritos em
+<a href="https://marimo.io/">marimo</a>) publicados como site estático. Cada link abre uma página que roda Python
+inteiramente dentro do seu navegador (WebAssembly) — sem servidor, sem login, sem instalação.</p>
+<ul>
+  <li><a href="TLC/">Teorema Central do Limite</a> — padrão <code>interact</code></li>
+  <li><a href="tStudent/">Distribuição t-Student</a> — padrão <code>.observe()</code></li>
+</ul>
+<p class="note">Piloto, 2026-11-16. O primeiro carregamento de cada página baixa o runtime Python (Pyodide) no
+navegador — pode levar alguns segundos; fica em cache depois disso.</p>
+</body>
+</html>
