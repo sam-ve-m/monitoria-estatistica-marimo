@@ -18,14 +18,23 @@
 <a href="https://marimo.io/">marimo</a>) publicados como site estático. Cada link abre uma página que roda Python
 inteiramente dentro do seu navegador (WebAssembly) — sem servidor, sem login, sem instalação.</p>
 <ul>
-  <li><a href="TLC/">Teorema Central do Limite</a> — padrão <code>interact</code></li>
-  <li><a href="tStudent/">Distribuição t-Student</a> — padrão <code>.observe()</code></li>
+  <li><a href="TLC/">Teorema Central do Limite</a></li>
+  <li><a href="tStudent/">Distribuição t-Student</a></li>
   <li><a href="LeiGrandesNumeros/">Lei dos Grandes Números</a></li>
   <li><a href="NormalPadrao/">Normal Padrão (Z)</a></li>
   <li><a href="Logistico5Par/">Modelo Logístico de 5 Parâmetros</a></li>
+  <li><a href="Gaussiana/">Normal (μ, σ ajustáveis)</a></li>
+  <li><a href="Qui2/">Qui-Quadrado (χ²)</a></li>
+  <li><a href="FSnedecor/">F-Snedecor</a></li>
+  <li><a href="DistribuicoesDiscretas/">Distribuições Discretas (PMF/CDF)</a></li>
+  <li><a href="VariaveisAletorias/">Variáveis Aleatórias</a></li>
+  <li><a href="DistribuicoesContinuasPrincipais/">Distribuições Contínuas Principais</a></li>
+  <li><a href="DistribuicoesPrincipais/">Distribuições Principais (Discretas + Contínuas)</a></li>
 </ul>
-<p class="note">Piloto, 2026-11-16. O primeiro carregamento de cada página baixa o runtime Python (Pyodide) no
-navegador — pode levar alguns segundos; fica em cache depois disso.</p>
+<p class="note">Todos os 12 notebooks acima usam o mesmo padrão canvas JS + live-drag (D10/D11,
+2026-11-16/17): o Python só calcula os números, um <code>&lt;canvas&gt;</code> desenha direto no navegador, e o
+gráfico já atualiza durante o arrasto do slider, não só ao soltar. O primeiro carregamento de cada página baixa
+o runtime Python (Pyodide) no navegador — pode levar alguns segundos; fica em cache depois disso.</p>
 
 <h1 style="font-size:1.1rem; margin-top:40px;">Comparação de velocidade do slider (TLC) — 2026-11-16</h1>
 <p>Duas versões experimentais do TLC, pra decidir qual seguir pros outros 10 notebooks. Mesmo gráfico, mesmo
@@ -38,7 +47,7 @@ layout (código-fonte visível abaixo), medidas no mesmo ambiente (Chromium head
   histogramas + curva); quem desenha é JavaScript direto no navegador. Bem mais rápido, mas o código mostrado
   é o que calcula os dados, não mais o matplotlib que desenhava os pixels.</li>
 </ul>
-<p class="note">Essas duas páginas são só pra comparação visual do Sam, não fazem parte do site final dos 11
-notebooks ainda.</p>
+<p class="note">Essas duas páginas são só pra comparação visual do Sam (a decisão já foi tomada: canvas JS,
+D6 2026-11-16) — não fazem parte da lista oficial dos 12 notebooks acima.</p>
 </body>
 </html>
