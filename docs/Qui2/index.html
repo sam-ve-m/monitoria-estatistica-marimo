@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="../_pyodide-assets/favicon.ico" />
+    <!-- Preload is necessary because we show these images when we disconnect from the server,
+    but at that point we cannot load these images from the server -->
+    <link rel="preload" href="../_pyodide-assets/assets/gradient-yHQUC_QB.png" as="image" />
+    <link rel="preload" href="../_pyodide-assets/assets/noise-60BoTA8O.png" as="image" />
+    <!-- Preload the fonts -->
+    <link rel="preload" href="../_pyodide-assets/assets/Lora-VariableFont_wght-CZceb_kH.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="../_pyodide-assets/assets/PTSans-Regular-Bam3NpBI.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="../_pyodide-assets/assets/PTSans-Bold-C_DwAp7Z.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="../_pyodide-assets/assets/FiraMono-Regular-CEsLFVD9.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="../_pyodide-assets/assets/FiraMono-Medium-D5MAsWEG.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="../_pyodide-assets/assets/FiraMono-Bold-C6PDArdf.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="a marimo app" />
+    <link rel="apple-touch-icon" href="../_pyodide-assets/apple-touch-icon.png" />
+    <link rel="manifest" href="../_pyodide-assets/manifest.json" />
+
+    <script data-marimo="true">
+      function __resizeIframe(obj) {
+        const scrollbarHeight = 20; // Max between windows, mac, and linux
+
+        function setHeight() {
+          // Guard against race condition where iframe isn't ready
+          if (!obj.contentWindow?.document?.documentElement) {
+            return;
+          }
+          const element = obj.contentWindow.document.documentElement;
+          // If there is no vertical scrollbar, we don't need to resize the iframe
+          if (element.scrollHeight === element.clientHeight) {
+            return;
+          }
+
+          // Create a new height that includes the scrollbar height if it's visible
+          const hasHorizontalScrollbar = element.scrollWidth > element.clientWidth;
+          const newHeight = element.scrollHeight + (hasHorizontalScrollbar ? scrollbarHeight : 0);
+
+          // Only update the height if it's different from the current height
+          if (obj.style.height !== `${newHeight}px`) {
+            obj.style.height = `${newHeight}px`;
+          }
+        }
+
+        // Resize the iframe to the height of the content and bottom scrollbar height
+        setHeight();
+
+        // Resize the iframe when the content changes
+        const resizeObserver = new ResizeObserver((_entries) => {
+          setHeight();
+        });
+        // Only observe if iframe content is ready
+        if (obj.contentWindow?.document?.body) {
+          resizeObserver.observe(obj.contentWindow.document.body);
+        }
+      }
+    </script>
+    <marimo-filename hidden>notebook.py</marimo-filename>
+    <!-- TODO(Trevor): Legacy, required by VS Code plugin. Remove when plugin is updated (see marimo/server/_templates/template.py) -->
+    <marimo-version data-version="{{ version }}" hidden></marimo-version>
+    <marimo-user-config data-config="{{ user_config }}" hidden></marimo-user-config>
+    <marimo-server-token data-token="{{ server_token }}" hidden></marimo-server-token>
+    <!-- /TODO -->
+    <title>Qui2 marimo</title>
+    <script type="module" crossorigin src="../_pyodide-assets/assets/index-s-M1OXjs.js"></script>
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/rolldown-runtime-B0Z9INg1.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/react-DVplv7_D.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/compiler-runtime-BrajqUja.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/useEvent-Dfcbgjhg.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/react-dom-_LrxgvjW.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/schemas-Dv42wLFq.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/isObject-BCaOs5rp.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/isSymbol-oX0TOjjx.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/now-Cmx0b_zA.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/debounce-aFmHgJZY.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/isArrayLikeObject-DnwgSs_Z.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/_baseMerge-CQpUq7ep.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/objects-snlMn4yk.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/useEventListener-D9cftcHj.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/invariant-Ci2dTZ72.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/config-VPSq73n8.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/utils-B4K466FK.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/session-DqoWmb7X.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/Deferred-CrTnjj37.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/config-DX8Y2WbJ.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/clsx-DB0hHKMi.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/cn-ldLVeaqm.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/jsx-runtime-B74pBk57.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/fullscreen-B9tHcfpV.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/dist-iaThVDkA.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/menu-items-BrwnTgyK.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/use-restore-focus-BxEGwIbk.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/createLucideIcon-DfJ2oMlA.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/circle-DXf-VWZG.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/button-COI-NGrx.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/check-BQNapYaf.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/I18nProvider-Cg2I_s1_.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/useNumberFormatter-D7O_26UI.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/select-DTBn5eTb.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/toast-BGzLGnvw.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/tooltip-C9TuY18o.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/paths-bkIFVj8h.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/useLifecycle-Mq4gc5kS.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/toDate-DOj9Q6uC.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/database-zap-B_PMVg8T.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/alert-dialog-BaPGzeOK.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/arrays-BqUx5USx.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/once-Haz_uxEL.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/numbers-Mk3-CcoU.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/useDebounce-B_ccBZTp.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/input-BoBxR50a.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/use-toast-Wu434mLr.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/requests-lt0JK8Jt.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/uuid-k9DpjH68.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/write-secret-modal-DzKAInL2.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/plus-C5silF6g.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/trash-2-DcgaW8fn.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/preload-helper-uBIymjUX.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/dist-Cny7_yZb.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/dist-DBMV4gqt.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/capabilities-BJvf-MD4.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/cjs-C49f7GXV.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/createReducer-DgRODTW6.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/dist-qhAY4L2r.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/marked.esm-B_3iMIUq.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/strings-B2vv-ENv.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/dist-BOfh4hMd.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/badge-crT3E0Rm.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/dist-DtH-7lot.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/dist-BmExfiwX.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/dist-1tmpVXyz.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/dist-LSsCJjA3.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/dist-DusFODSa.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/stex-Dc5bKD4z.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/useTheme-COhSHkCj.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/useAsyncData-C7aJJz0Y.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/purify.es--06brOip.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/cells-BRkCaSsh.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/coerce-CpE6kUdX.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/get-DjNf4SIX.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/_hasPath-BmRQipI0.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/hasIn-yw4sIeJR.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/_baseSet-Bpdo9AvU.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/pick-DKIID_Mo.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/state-BAJYRhmO.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/state-C3oDoyFe.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/LazyAnyLanguageCodeMirror-CKcCbG2G.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/copy-D8O_CYCG.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/micromark-factory-space-D9Dr-k4J.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/chunk-YOKDWASO-BIpRENEC.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/markdown-renderer-BG3sp2rs.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/copy-Djr5m5ac.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/copy-icon-BIiRXh_3.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/useRunCells-B2vUhREg.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/RenderHTML-BbOqmHy3.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/blob-D5nfNHOo.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/kbd-pdKBv96t.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/useInstallPackage-iX1eufdl.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/errors-DCrsa1nH.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/api-BeC_VSGv.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/share-BZW3tzEX.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/events-CbeVJ6OD.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/state-_Qai_QyX.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/pair-CaQyK6En.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/ErrorBoundary-Gl5nCA8C.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/config-BOKzA3tF.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/chevron-right-eAtVhbNZ.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/dropdown-menu-C1rnl-0o.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/html-to-image-DK9Zl1lU.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/download-DCJXy66H.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/switch-CTaiAjrz.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/tabs-BuQlZFbt.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/table-DG7Ap4H4.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/eye-off-CxVozGAC.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/refresh-cw-Qw1f8Jhy.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/tree-actions-GM5E_bUs.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/ellipsis-63DyBLHQ.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/external-link-UrX9KO36.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/spinner-DyNE-o8o.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/message-circle-C3rKm8_a.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/hat-glasses-C8RhSVii.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/package-GSoSTiIK.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/datasource-Cq6x_5ML.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/alert-DTaqCu_d.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/state-XsPO8hNi.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/cell-link-LSth_8hT.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/MarimoErrorOutput-D60XkCny.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/useDateFormatter-DA-62E-Y.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/en-US-Buu61juQ.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/isValid-q_Ad80ug.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/dates-BbFQ2oE4.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/defaultLocale-CNPGWpMu.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/precisionRound-Bq_nmf5u.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/defaultLocale-D5bOh7g6.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/vega-loader.browser-CLRkNgm7.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/tooltip-mT3CGest.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/react-icons.esm-D6tfmvq8.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/extends-CvVTau-c.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/objectWithoutPropertiesLoose-Do6ywDBO.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/useIframeCapabilities-CwTkczVN.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/error-banner-Cd69vvyX.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/utils-CaQYvazl.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/formats-yZ06h1Pl.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/table-vrvqpuKJ.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/react-resizable-panels.browser.esm-Dbe0MrFr.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/JsonOutput-D6HIIsCb.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/chart-no-axes-column-C4_v6fQW.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/square-function-_W_Lo0P4.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/spec-BfSBcO5B.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/semaphore-BjoL5P0h.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/fileToBase64-BgBraYAr.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/useBoolean-BDD6_xQQ.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/code-xml-SQaZqvcO.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/file-headphone-Dl35U6h3.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/file-BPBVl9pl.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/image-wZvTj8WY.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/file-icons-CdJgUy-I.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/globe-UdPdIbF7.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/esm-CI_o7NhW.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/useAddCell-GR7eEQrT.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/readonly-python-code-DCSMIsTX.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/data-grid-types-DgHVN_Zz.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/glide-utils-CIrAxdjv.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/column-preview-Cm2D6vyX.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/square-BPmgQFnh.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/triangle-alert-DmIqR8sY.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/prop-types-Djf4O40e.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/es-Cqst59WX.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/package-data-dv4FBHxR.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/markdown-export-DzhB1FrN.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/renderShortcut-BkVJQ_Zh.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/bundle.esm-D3tw5rqW.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/icons-CiZ_8zS-.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/useDeepCompareMemoize-DFIVN9dn.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/pathUtils-DPmlLd-r.js">
+    <link rel="modulepreload" crossorigin href="../_pyodide-assets/assets/floating-outline-XD9FAV-f.js">
+    <link rel="stylesheet" crossorigin href="../_pyodide-assets/assets/cells-0PFKL3SH.css">
+    <link rel="stylesheet" crossorigin href="../_pyodide-assets/assets/markdown-renderer-DjIHoF9Z.css">
+    <link rel="stylesheet" crossorigin href="../_pyodide-assets/assets/JsonOutput-B0GmlMnR.css">
+    <link rel="stylesheet" crossorigin href="../_pyodide-assets/assets/index-Bcdzex-3.css">
+  <marimo-wasm hidden="" data-pyodide-index-url="../_pyodide-assets/pyodide/" data-pyodide-lockfile-url="../_pyodide-assets/lockfile/d011153465314a31.json" data-pypi-index-url="../_pyodide-assets/packages/index/"></marimo-wasm>
+    <script>
+        if (window.location.protocol === 'file:') {
+            alert('Warning: This file must be served by an HTTP server to function correctly.');
+        }
+    </script>
+    
+    <style>
+        #save-button {
+            display: none !important;
+        }
+        #filename-input {
+            display: none !important;
+        }
+    </style>
+    
+<script data-marimo="true">
+    Object.defineProperty(window, "__MARIMO_EXPORT_CONTEXT__", {
+        value: Object.freeze({
+            trusted: true,
+            notebookCode: "# /// script\n# requires-python = \"\u003E=3.11\"\n# dependencies = [\"marimo\", \"numpy\", \"pandas\", \"scipy\", \"anywidget\", \"traitlets\", \"jinja2\"]\n# ///\n\n# Migrado do original ipywidgets/Colab (workspaces/monitoria_estatistica/\n# scripts_originais/Qui2.ipynb) pro padr\u00e3o canvas JS + live-drag (D10/D11).\n# Curva assim\u00e9trica (fill_between inteiro + regi\u00e3o selecionada em amarelo)\n# + tabela de valores cr\u00edticos, mesmo princ\u00edpio do FSnedecor/tStudent.\n#\n# Simplifica\u00e7\u00e3o deliberada (mesma do Gaussiana): o original reajustava o\n# max dos sliders \u03c7\u00b2\u2081/\u03c7\u00b2\u2082 dinamicamente conforme o gl mudava\n# (`ajusta_limites_sliders`). Aqui os dois sliders usam uma faixa est\u00e1tica\n# larga (0-150) que cobre o pior caso (gl at\u00e9 50 -\u003E limite_x ~100).\n\nimport marimo\n\n__generated_with = \"0.25.2\"\napp = marimo.App(width=\"medium\")\n\n\n@app.cell\ndef _():\n    import marimo as mo\n    import numpy as np\n    import pandas as pd\n    from scipy.stats import chi2\n    import anywidget\n    import traitlets\n    import json\n\n    return anywidget, chi2, json, mo, np, pd, traitlets\n\n\n@app.cell\ndef _(mo):\n    mo.md(\"\"\"\n    ## Painel Interativo: Distribui\u00e7\u00e3o Qui-Quadrado\n    \"\"\")\n    return\n\n\n@app.cell\ndef _(mo):\n    slider_gl = mo.ui.slider(start=1, stop=50, step=1, value=4, label=\"Graus de Lib. (gl):\", debounce=False)\n    slider_x1 = mo.ui.slider(start=0.0, stop=150.0, step=0.1, value=1.0, label=\"\u03c7\u00b2\u2081 (In\u00edcio):\", debounce=False)\n    slider_x2 = mo.ui.slider(start=0.0, stop=150.0, step=0.1, value=7.0, label=\"\u03c7\u00b2\u2082 (Fim):\", debounce=False)\n    mo.vstack([slider_gl, slider_x1, slider_x2])\n    return slider_gl, slider_x1, slider_x2\n\n\n@app.cell\ndef _(anywidget, traitlets):\n    class Chi2Widget(anywidget.AnyWidget):\n        _esm = r\"\"\"\n        function render({ model, el }) {\n            const dpr = window.devicePixelRatio || 1;\n            const cssW = 700, cssH = 400;\n\n            const root = document.createElement(\"div\");\n            root.style.fontFamily = \"system-ui, -apple-system, sans-serif\";\n            root.style.maxWidth = cssW + \"px\";\n\n            const canvas = document.createElement(\"canvas\");\n            canvas.style.width = cssW + \"px\";\n            canvas.style.height = cssH + \"px\";\n            canvas.width = cssW * dpr;\n            canvas.height = cssH * dpr;\n            root.appendChild(canvas);\n            el.appendChild(root);\n\n            function fillUnder(ctx, curveX, curveY, xToPx, yToPx, style, alpha, lo, hi) {\n                ctx.save();\n                ctx.globalAlpha = alpha;\n                ctx.fillStyle = style;\n                ctx.beginPath();\n                let started = false, lastPx = null;\n                for (let i = 0; i \u003C curveX.length; i++) {\n                    const xv = curveX[i];\n                    if (lo !== undefined \u0026\u0026 (xv \u003C lo || xv \u003E hi)) continue;\n                    const px = xToPx(xv), py = yToPx(curveY[i]);\n                    if (!started) { ctx.moveTo(px, yToPx(0)); ctx.lineTo(px, py); started = true; }\n                    else ctx.lineTo(px, py);\n                    lastPx = px;\n                }\n                if (started) { ctx.lineTo(lastPx, yToPx(0)); ctx.closePath(); ctx.fill(); }\n                ctx.restore();\n            }\n\n            function draw() {\n                const payload = JSON.parse(model.get(\"payload_json\") || \"{}\");\n                if (!payload.curve_x) return;\n\n                const ctx = canvas.getContext(\"2d\");\n                const W = canvas.width, H = canvas.height;\n                ctx.clearRect(0, 0, W, H);\n                ctx.fillStyle = \"#FFF5EE\";\n                ctx.fillRect(0, 0, W, H);\n\n                const padL = 60 * dpr, padR = 20 * dpr, padT = 55 * dpr, padB = 55 * dpr;\n                const plotW = W - padL - padR;\n                const plotH = H - padT - padB;\n                const xlo = 0, xhi = payload.limite_x;\n                const ymax = payload.ymax;\n                const ylo = -ymax * 0.08, yhi = ymax * 1.1;\n\n                function xToPx(x) { return padL + ((x - xlo) / (xhi - xlo)) * plotW; }\n                function yToPx(y) { return padT + plotH - ((y - ylo) / (yhi - ylo)) * plotH; }\n\n                const curveX = payload.curve_x, curveY = payload.curve_y;\n\n                fillUnder(ctx, curveX, curveY, xToPx, yToPx, \"#274d4d\", 0.3);\n\n                ctx.save();\n                ctx.strokeStyle = \"darkslategray\"; ctx.lineWidth = 2 * dpr;\n                ctx.beginPath();\n                for (let i = 0; i \u003C curveX.length; i++) {\n                    const px = xToPx(curveX[i]), py = yToPx(curveY[i]);\n                    if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);\n                }\n                ctx.stroke();\n                ctx.restore();\n\n                fillUnder(ctx, curveX, curveY, xToPx, yToPx, \"yellow\", 0.7, payload.a_plot, payload.b_plot);\n\n                ctx.save();\n                ctx.fillStyle = \"red\"; ctx.font = \"bold \" + (16 * dpr) + \"px system-ui, sans-serif\";\n                ctx.textAlign = \"center\"; ctx.textBaseline = \"middle\";\n                ctx.fillText(payload.prob_sel.toFixed(2) + \"%\", xToPx((payload.a_plot + payload.b_plot) / 2), yToPx(ymax * 0.4));\n                ctx.fillStyle = \"blue\"; ctx.font = \"bold \" + (11 * dpr) + \"px system-ui, sans-serif\";\n                ctx.fillText(\"\u03c7\u00b2\u2081=\" + payload.x1.toFixed(2), xToPx(payload.a_plot), yToPx(-ymax * 0.05));\n                ctx.fillText(\"\u03c7\u00b2\u2082=\" + payload.x2.toFixed(2), xToPx(payload.b_plot), yToPx(-ymax * 0.05));\n                ctx.restore();\n\n                ctx.save();\n                ctx.strokeStyle = \"#333\"; ctx.lineWidth = 1 * dpr;\n                ctx.strokeRect(padL, padT, plotW, plotH);\n\n                ctx.fillStyle = \"#333\"; ctx.font = (9 * dpr) + \"px system-ui, sans-serif\";\n                ctx.textAlign = \"center\"; ctx.textBaseline = \"top\";\n                const nTicks = 6;\n                for (let t = 0; t \u003C= nTicks; t++) {\n                    const xv = xlo + (xhi - xlo) * (t / nTicks);\n                    const px = xToPx(xv);\n                    ctx.beginPath(); ctx.moveTo(px, padT + plotH); ctx.lineTo(px, padT + plotH + 4 * dpr); ctx.stroke();\n                    ctx.fillText(xv.toFixed(0), px, padT + plotH + 6 * dpr);\n                }\n                ctx.textAlign = \"right\"; ctx.textBaseline = \"middle\";\n                for (let t = 0; t \u003C= 4; t++) {\n                    const yv = ymax * (t / 4);\n                    const py = yToPx(yv);\n                    ctx.beginPath(); ctx.moveTo(padL - 4 * dpr, py); ctx.lineTo(padL, py); ctx.stroke();\n                    ctx.fillText(yv.toFixed(3), padL - 7 * dpr, py);\n                }\n\n                ctx.textAlign = \"center\"; ctx.textBaseline = \"alphabetic\";\n                ctx.font = (12 * dpr) + \"px system-ui, sans-serif\";\n                ctx.fillText(\"Valor de \u03c7\u00b2\", padL + plotW / 2, padT + plotH + 30 * dpr);\n                ctx.save();\n                ctx.translate(padL - 42 * dpr, padT + plotH / 2);\n                ctx.rotate(-Math.PI / 2);\n                ctx.textAlign = \"center\";\n                ctx.fillText(\"Densidade de probabilidade\", 0, 0);\n                ctx.restore();\n                ctx.restore();\n\n                ctx.font = \"bold \" + (15 * dpr) + \"px system-ui, sans-serif\";\n                ctx.textAlign = \"center\"; ctx.textBaseline = \"alphabetic\";\n                ctx.fillText(\"Distribui\u00e7\u00e3o Qui-Quadrado (Graus de Liberdade = \" + payload.gl + \")\", padL + plotW / 2, padT - 22 * dpr);\n\n                ctx.save();\n                const legW = 170 * dpr, legH = 28 * dpr;\n                const legX = padL + plotW - legW - 8 * dpr, legY = padT + 8 * dpr;\n                ctx.fillStyle = \"rgba(255,255,255,0.9)\"; ctx.strokeStyle = \"#999\"; ctx.lineWidth = 1 * dpr;\n                ctx.fillRect(legX, legY, legW, legH); ctx.strokeRect(legX, legY, legW, legH);\n                ctx.fillStyle = \"#274d4d\"; ctx.globalAlpha = 0.5;\n                ctx.fillRect(legX + 8 * dpr, legY + 8 * dpr, 20 * dpr, 12 * dpr);\n                ctx.globalAlpha = 1;\n                ctx.fillStyle = \"#111\"; ctx.font = (10 * dpr) + \"px system-ui, sans-serif\";\n                ctx.textAlign = \"left\"; ctx.textBaseline = \"middle\";\n                ctx.fillText(\"Qui-Quadrado (gl=\" + payload.gl + \")\", legX + 34 * dpr, legY + 14 * dpr);\n                ctx.restore();\n\n                root.setAttribute(\"data-render-seq\", payload.seq);\n            }\n\n            model.on(\"change:payload_json\", draw);\n            draw();\n        }\n        export default { render };\n        \"\"\"\n        payload_json = traitlets.Unicode(\"{}\").tag(sync=True)\n\n    return (Chi2Widget,)\n\n\n@app.cell\ndef _(Chi2Widget, mo):\n    widget = mo.ui.anywidget(Chi2Widget())\n    widget\n    return (widget,)\n\n\n@app.cell\ndef _(chi2, json, mo, np, slider_gl, slider_x1, slider_x2, widget):\n    gl = slider_gl.value\n    x1 = slider_x1.value\n    x2 = slider_x2.value\n    limite_inferior, limite_superior = min(x1, x2), max(x1, x2)\n\n    limite_x = max(20, gl + 4 * np.sqrt(2 * gl))\n    x = np.linspace(0.001, limite_x, 1000)\n    y = chi2.pdf(x, df=gl)\n\n    a_plot = min(limite_inferior, limite_x)\n    b_plot = min(limite_superior, limite_x)\n    prob_sel = float(chi2.cdf(limite_superior, df=gl) - chi2.cdf(limite_inferior, df=gl))\n\n    payload = {\n        \"curve_x\": x.tolist(), \"curve_y\": y.tolist(),\n        \"limite_x\": float(limite_x), \"ymax\": float(y.max()),\n        \"a_plot\": float(a_plot), \"b_plot\": float(b_plot),\n        \"x1\": float(x1), \"x2\": float(x2),\n        \"prob_sel\": prob_sel * 100, \"gl\": int(gl),\n        \"seq\": f\"{gl}-{x1}-{x2}\",\n    }\n    widget.payload_json = json.dumps(payload)\n    mo.show_code(position=\"below\")\n    return (gl,)\n\n\n@app.cell\ndef _(chi2, np, pd):\n    probabilidades_alfa = [0.99, 0.975, 0.95, 0.90, 0.10, 0.05, 0.025, 0.01]\n    colunas_chi = [f\"\u03b1 = {p}\" for p in probabilidades_alfa]\n    linhas_gl_chi = list(range(1, 31))\n\n    def calcula_tabela_chi():\n        dados = np.zeros((len(linhas_gl_chi), len(probabilidades_alfa)))\n        for i, g in enumerate(linhas_gl_chi):\n            for j, alpha in enumerate(probabilidades_alfa):\n                dados[i, j] = chi2.ppf(1 - alpha, df=g)\n        return pd.DataFrame(dados, index=linhas_gl_chi, columns=colunas_chi)\n\n    tabela_chi = calcula_tabela_chi()\n    return linhas_gl_chi, tabela_chi\n\n\n@app.cell\ndef _(gl, linhas_gl_chi, mo, pd, tabela_chi):\n    def destaca_linha(valor):\n        return \"background-color: #FFFF99;\" if gl in linhas_gl_chi else \"\"\n\n    tabela_estilizada = tabela_chi.style.set_caption(\n        \"Tabela de Valores Cr\u00edticos de Qui-Quadrado (\u00c1rea \u00e0 Direita)\"\n    ).format(\"{:.4f}\").set_table_styles(\n        [\n            {\"selector\": \"th, td\", \"props\": [(\"border\", \"1px solid black\"), (\"text-align\", \"center\"), (\"padding\", \"5px\")]},\n            {\"selector\": \"caption\", \"props\": [(\"font-weight\", \"bold\"), (\"font-size\", \"14px\")]},\n        ]\n    ).map(destaca_linha, subset=pd.IndexSlice[[gl] if gl in linhas_gl_chi else [], :])\n    mo.show_code(tabela_estilizada, position=\"below\")\n    return\n\n\nif __name__ == \"__main__\":\n    app.run()\n",
+        }),
+        writable: false,
+        configurable: false,
+    });
+</script>
+<marimo-code hidden="">%23%20%2F%2F%2F%20script%0A%23%20requires-python%20%3D%20%22%3E%3D3.11%22%0A%23%20dependencies%20%3D%20%5B%22marimo%22%2C%20%22numpy%22%2C%20%22pandas%22%2C%20%22scipy%22%2C%20%22anywidget%22%2C%20%22traitlets%22%2C%20%22jinja2%22%5D%0A%23%20%2F%2F%2F%0A%0A%23%20Migrado%20do%20original%20ipywidgets%2FColab%20(workspaces%2Fmonitoria_estatistica%2F%0A%23%20scripts_originais%2FQui2.ipynb)%20pro%20padr%C3%A3o%20canvas%20JS%20%2B%20live-drag%20(D10%2FD11).%0A%23%20Curva%20assim%C3%A9trica%20(fill_between%20inteiro%20%2B%20regi%C3%A3o%20selecionada%20em%20amarelo)%0A%23%20%2B%20tabela%20de%20valores%20cr%C3%ADticos%2C%20mesmo%20princ%C3%ADpio%20do%20FSnedecor%2FtStudent.%0A%23%0A%23%20Simplifica%C3%A7%C3%A3o%20deliberada%20(mesma%20do%20Gaussiana)%3A%20o%20original%20reajustava%20o%0A%23%20max%20dos%20sliders%20%CF%87%C2%B2%E2%82%81%2F%CF%87%C2%B2%E2%82%82%20dinamicamente%20conforme%20o%20gl%20mudava%0A%23%20(%60ajusta_limites_sliders%60).%20Aqui%20os%20dois%20sliders%20usam%20uma%20faixa%20est%C3%A1tica%0A%23%20larga%20(0-150)%20que%20cobre%20o%20pior%20caso%20(gl%20at%C3%A9%2050%20-%3E%20limite_x%20~100).%0A%0Aimport%20marimo%0A%0A__generated_with%20%3D%20%220.25.2%22%0Aapp%20%3D%20marimo.App(width%3D%22medium%22)%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20import%20marimo%20as%20mo%0A%20%20%20%20import%20numpy%20as%20np%0A%20%20%20%20import%20pandas%20as%20pd%0A%20%20%20%20from%20scipy.stats%20import%20chi2%0A%20%20%20%20import%20anywidget%0A%20%20%20%20import%20traitlets%0A%20%20%20%20import%20json%0A%0A%20%20%20%20return%20anywidget%2C%20chi2%2C%20json%2C%20mo%2C%20np%2C%20pd%2C%20traitlets%0A%0A%0A%40app.cell%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(%22%22%22%0A%20%20%20%20%23%23%20Painel%20Interativo%3A%20Distribui%C3%A7%C3%A3o%20Qui-Quadrado%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(mo)%3A%0A%20%20%20%20slider_gl%20%3D%20mo.ui.slider(start%3D1%2C%20stop%3D50%2C%20step%3D1%2C%20value%3D4%2C%20label%3D%22Graus%20de%20Lib.%20(gl)%3A%22%2C%20debounce%3DFalse)%0A%20%20%20%20slider_x1%20%3D%20mo.ui.slider(start%3D0.0%2C%20stop%3D150.0%2C%20step%3D0.1%2C%20value%3D1.0%2C%20label%3D%22%CF%87%C2%B2%E2%82%81%20(In%C3%ADcio)%3A%22%2C%20debounce%3DFalse)%0A%20%20%20%20slider_x2%20%3D%20mo.ui.slider(start%3D0.0%2C%20stop%3D150.0%2C%20step%3D0.1%2C%20value%3D7.0%2C%20label%3D%22%CF%87%C2%B2%E2%82%82%20(Fim)%3A%22%2C%20debounce%3DFalse)%0A%20%20%20%20mo.vstack(%5Bslider_gl%2C%20slider_x1%2C%20slider_x2%5D)%0A%20%20%20%20return%20slider_gl%2C%20slider_x1%2C%20slider_x2%0A%0A%0A%40app.cell%0Adef%20_(anywidget%2C%20traitlets)%3A%0A%20%20%20%20class%20Chi2Widget(anywidget.AnyWidget)%3A%0A%20%20%20%20%20%20%20%20_esm%20%3D%20r%22%22%22%0A%20%20%20%20%20%20%20%20function%20render(%7B%20model%2C%20el%20%7D)%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20const%20dpr%20%3D%20window.devicePixelRatio%20%7C%7C%201%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20const%20cssW%20%3D%20700%2C%20cssH%20%3D%20400%3B%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20const%20root%20%3D%20document.createElement(%22div%22)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20root.style.fontFamily%20%3D%20%22system-ui%2C%20-apple-system%2C%20sans-serif%22%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20root.style.maxWidth%20%3D%20cssW%20%2B%20%22px%22%3B%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20const%20canvas%20%3D%20document.createElement(%22canvas%22)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20canvas.style.width%20%3D%20cssW%20%2B%20%22px%22%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20canvas.style.height%20%3D%20cssH%20%2B%20%22px%22%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20canvas.width%20%3D%20cssW%20*%20dpr%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20canvas.height%20%3D%20cssH%20*%20dpr%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20root.appendChild(canvas)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20el.appendChild(root)%3B%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20function%20fillUnder(ctx%2C%20curveX%2C%20curveY%2C%20xToPx%2C%20yToPx%2C%20style%2C%20alpha%2C%20lo%2C%20hi)%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.save()%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.globalAlpha%20%3D%20alpha%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.fillStyle%20%3D%20style%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.beginPath()%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20let%20started%20%3D%20false%2C%20lastPx%20%3D%20null%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20for%20(let%20i%20%3D%200%3B%20i%20%3C%20curveX.length%3B%20i%2B%2B)%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20const%20xv%20%3D%20curveX%5Bi%5D%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20if%20(lo%20!%3D%3D%20undefined%20%26%26%20(xv%20%3C%20lo%20%7C%7C%20xv%20%3E%20hi))%20continue%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20const%20px%20%3D%20xToPx(xv)%2C%20py%20%3D%20yToPx(curveY%5Bi%5D)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20if%20(!started)%20%7B%20ctx.moveTo(px%2C%20yToPx(0))%3B%20ctx.lineTo(px%2C%20py)%3B%20started%20%3D%20true%3B%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20else%20ctx.lineTo(px%2C%20py)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20lastPx%20%3D%20px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20if%20(started)%20%7B%20ctx.lineTo(lastPx%2C%20yToPx(0))%3B%20ctx.closePath()%3B%20ctx.fill()%3B%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.restore()%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20function%20draw()%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20const%20payload%20%3D%20JSON.parse(model.get(%22payload_json%22)%20%7C%7C%20%22%7B%7D%22)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20if%20(!payload.curve_x)%20return%3B%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20const%20ctx%20%3D%20canvas.getContext(%222d%22)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20const%20W%20%3D%20canvas.width%2C%20H%20%3D%20canvas.height%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.clearRect(0%2C%200%2C%20W%2C%20H)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.fillStyle%20%3D%20%22%23FFF5EE%22%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.fillRect(0%2C%200%2C%20W%2C%20H)%3B%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20const%20padL%20%3D%2060%20*%20dpr%2C%20padR%20%3D%2020%20*%20dpr%2C%20padT%20%3D%2055%20*%20dpr%2C%20padB%20%3D%2055%20*%20dpr%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20const%20plotW%20%3D%20W%20-%20padL%20-%20padR%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20const%20plotH%20%3D%20H%20-%20padT%20-%20padB%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20const%20xlo%20%3D%200%2C%20xhi%20%3D%20payload.limite_x%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20const%20ymax%20%3D%20payload.ymax%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20const%20ylo%20%3D%20-ymax%20*%200.08%2C%20yhi%20%3D%20ymax%20*%201.1%3B%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20function%20xToPx(x)%20%7B%20return%20padL%20%2B%20((x%20-%20xlo)%20%2F%20(xhi%20-%20xlo))%20*%20plotW%3B%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20function%20yToPx(y)%20%7B%20return%20padT%20%2B%20plotH%20-%20((y%20-%20ylo)%20%2F%20(yhi%20-%20ylo))%20*%20plotH%3B%20%7D%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20const%20curveX%20%3D%20payload.curve_x%2C%20curveY%20%3D%20payload.curve_y%3B%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20fillUnder(ctx%2C%20curveX%2C%20curveY%2C%20xToPx%2C%20yToPx%2C%20%22%23274d4d%22%2C%200.3)%3B%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.save()%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.strokeStyle%20%3D%20%22darkslategray%22%3B%20ctx.lineWidth%20%3D%202%20*%20dpr%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.beginPath()%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20for%20(let%20i%20%3D%200%3B%20i%20%3C%20curveX.length%3B%20i%2B%2B)%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20const%20px%20%3D%20xToPx(curveX%5Bi%5D)%2C%20py%20%3D%20yToPx(curveY%5Bi%5D)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20if%20(i%20%3D%3D%3D%200)%20ctx.moveTo(px%2C%20py)%3B%20else%20ctx.lineTo(px%2C%20py)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.stroke()%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.restore()%3B%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20fillUnder(ctx%2C%20curveX%2C%20curveY%2C%20xToPx%2C%20yToPx%2C%20%22yellow%22%2C%200.7%2C%20payload.a_plot%2C%20payload.b_plot)%3B%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.save()%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.fillStyle%20%3D%20%22red%22%3B%20ctx.font%20%3D%20%22bold%20%22%20%2B%20(16%20*%20dpr)%20%2B%20%22px%20system-ui%2C%20sans-serif%22%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.textAlign%20%3D%20%22center%22%3B%20ctx.textBaseline%20%3D%20%22middle%22%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.fillText(payload.prob_sel.toFixed(2)%20%2B%20%22%25%22%2C%20xToPx((payload.a_plot%20%2B%20payload.b_plot)%20%2F%202)%2C%20yToPx(ymax%20*%200.4))%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.fillStyle%20%3D%20%22blue%22%3B%20ctx.font%20%3D%20%22bold%20%22%20%2B%20(11%20*%20dpr)%20%2B%20%22px%20system-ui%2C%20sans-serif%22%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.fillText(%22%CF%87%C2%B2%E2%82%81%3D%22%20%2B%20payload.x1.toFixed(2)%2C%20xToPx(payload.a_plot)%2C%20yToPx(-ymax%20*%200.05))%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.fillText(%22%CF%87%C2%B2%E2%82%82%3D%22%20%2B%20payload.x2.toFixed(2)%2C%20xToPx(payload.b_plot)%2C%20yToPx(-ymax%20*%200.05))%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.restore()%3B%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.save()%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.strokeStyle%20%3D%20%22%23333%22%3B%20ctx.lineWidth%20%3D%201%20*%20dpr%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.strokeRect(padL%2C%20padT%2C%20plotW%2C%20plotH)%3B%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.fillStyle%20%3D%20%22%23333%22%3B%20ctx.font%20%3D%20(9%20*%20dpr)%20%2B%20%22px%20system-ui%2C%20sans-serif%22%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.textAlign%20%3D%20%22center%22%3B%20ctx.textBaseline%20%3D%20%22top%22%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20const%20nTicks%20%3D%206%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20for%20(let%20t%20%3D%200%3B%20t%20%3C%3D%20nTicks%3B%20t%2B%2B)%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20const%20xv%20%3D%20xlo%20%2B%20(xhi%20-%20xlo)%20*%20(t%20%2F%20nTicks)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20const%20px%20%3D%20xToPx(xv)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.beginPath()%3B%20ctx.moveTo(px%2C%20padT%20%2B%20plotH)%3B%20ctx.lineTo(px%2C%20padT%20%2B%20plotH%20%2B%204%20*%20dpr)%3B%20ctx.stroke()%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.fillText(xv.toFixed(0)%2C%20px%2C%20padT%20%2B%20plotH%20%2B%206%20*%20dpr)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.textAlign%20%3D%20%22right%22%3B%20ctx.textBaseline%20%3D%20%22middle%22%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20for%20(let%20t%20%3D%200%3B%20t%20%3C%3D%204%3B%20t%2B%2B)%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20const%20yv%20%3D%20ymax%20*%20(t%20%2F%204)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20const%20py%20%3D%20yToPx(yv)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.beginPath()%3B%20ctx.moveTo(padL%20-%204%20*%20dpr%2C%20py)%3B%20ctx.lineTo(padL%2C%20py)%3B%20ctx.stroke()%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.fillText(yv.toFixed(3)%2C%20padL%20-%207%20*%20dpr%2C%20py)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.textAlign%20%3D%20%22center%22%3B%20ctx.textBaseline%20%3D%20%22alphabetic%22%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.font%20%3D%20(12%20*%20dpr)%20%2B%20%22px%20system-ui%2C%20sans-serif%22%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.fillText(%22Valor%20de%20%CF%87%C2%B2%22%2C%20padL%20%2B%20plotW%20%2F%202%2C%20padT%20%2B%20plotH%20%2B%2030%20*%20dpr)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.save()%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.translate(padL%20-%2042%20*%20dpr%2C%20padT%20%2B%20plotH%20%2F%202)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.rotate(-Math.PI%20%2F%202)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.textAlign%20%3D%20%22center%22%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.fillText(%22Densidade%20de%20probabilidade%22%2C%200%2C%200)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.restore()%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.restore()%3B%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.font%20%3D%20%22bold%20%22%20%2B%20(15%20*%20dpr)%20%2B%20%22px%20system-ui%2C%20sans-serif%22%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.textAlign%20%3D%20%22center%22%3B%20ctx.textBaseline%20%3D%20%22alphabetic%22%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.fillText(%22Distribui%C3%A7%C3%A3o%20Qui-Quadrado%20(Graus%20de%20Liberdade%20%3D%20%22%20%2B%20payload.gl%20%2B%20%22)%22%2C%20padL%20%2B%20plotW%20%2F%202%2C%20padT%20-%2022%20*%20dpr)%3B%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.save()%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20const%20legW%20%3D%20170%20*%20dpr%2C%20legH%20%3D%2028%20*%20dpr%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20const%20legX%20%3D%20padL%20%2B%20plotW%20-%20legW%20-%208%20*%20dpr%2C%20legY%20%3D%20padT%20%2B%208%20*%20dpr%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.fillStyle%20%3D%20%22rgba(255%2C255%2C255%2C0.9)%22%3B%20ctx.strokeStyle%20%3D%20%22%23999%22%3B%20ctx.lineWidth%20%3D%201%20*%20dpr%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.fillRect(legX%2C%20legY%2C%20legW%2C%20legH)%3B%20ctx.strokeRect(legX%2C%20legY%2C%20legW%2C%20legH)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.fillStyle%20%3D%20%22%23274d4d%22%3B%20ctx.globalAlpha%20%3D%200.5%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.fillRect(legX%20%2B%208%20*%20dpr%2C%20legY%20%2B%208%20*%20dpr%2C%2020%20*%20dpr%2C%2012%20*%20dpr)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.globalAlpha%20%3D%201%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.fillStyle%20%3D%20%22%23111%22%3B%20ctx.font%20%3D%20(10%20*%20dpr)%20%2B%20%22px%20system-ui%2C%20sans-serif%22%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.textAlign%20%3D%20%22left%22%3B%20ctx.textBaseline%20%3D%20%22middle%22%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.fillText(%22Qui-Quadrado%20(gl%3D%22%20%2B%20payload.gl%20%2B%20%22)%22%2C%20legX%20%2B%2034%20*%20dpr%2C%20legY%20%2B%2014%20*%20dpr)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ctx.restore()%3B%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20root.setAttribute(%22data-render-seq%22%2C%20payload.seq)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20model.on(%22change%3Apayload_json%22%2C%20draw)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20draw()%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20export%20default%20%7B%20render%20%7D%3B%0A%20%20%20%20%20%20%20%20%22%22%22%0A%20%20%20%20%20%20%20%20payload_json%20%3D%20traitlets.Unicode(%22%7B%7D%22).tag(sync%3DTrue)%0A%0A%20%20%20%20return%20(Chi2Widget%2C)%0A%0A%0A%40app.cell%0Adef%20_(Chi2Widget%2C%20mo)%3A%0A%20%20%20%20widget%20%3D%20mo.ui.anywidget(Chi2Widget())%0A%20%20%20%20widget%0A%20%20%20%20return%20(widget%2C)%0A%0A%0A%40app.cell%0Adef%20_(chi2%2C%20json%2C%20mo%2C%20np%2C%20slider_gl%2C%20slider_x1%2C%20slider_x2%2C%20widget)%3A%0A%20%20%20%20gl%20%3D%20slider_gl.value%0A%20%20%20%20x1%20%3D%20slider_x1.value%0A%20%20%20%20x2%20%3D%20slider_x2.value%0A%20%20%20%20limite_inferior%2C%20limite_superior%20%3D%20min(x1%2C%20x2)%2C%20max(x1%2C%20x2)%0A%0A%20%20%20%20limite_x%20%3D%20max(20%2C%20gl%20%2B%204%20*%20np.sqrt(2%20*%20gl))%0A%20%20%20%20x%20%3D%20np.linspace(0.001%2C%20limite_x%2C%201000)%0A%20%20%20%20y%20%3D%20chi2.pdf(x%2C%20df%3Dgl)%0A%0A%20%20%20%20a_plot%20%3D%20min(limite_inferior%2C%20limite_x)%0A%20%20%20%20b_plot%20%3D%20min(limite_superior%2C%20limite_x)%0A%20%20%20%20prob_sel%20%3D%20float(chi2.cdf(limite_superior%2C%20df%3Dgl)%20-%20chi2.cdf(limite_inferior%2C%20df%3Dgl))%0A%0A%20%20%20%20payload%20%3D%20%7B%0A%20%20%20%20%20%20%20%20%22curve_x%22%3A%20x.tolist()%2C%20%22curve_y%22%3A%20y.tolist()%2C%0A%20%20%20%20%20%20%20%20%22limite_x%22%3A%20float(limite_x)%2C%20%22ymax%22%3A%20float(y.max())%2C%0A%20%20%20%20%20%20%20%20%22a_plot%22%3A%20float(a_plot)%2C%20%22b_plot%22%3A%20float(b_plot)%2C%0A%20%20%20%20%20%20%20%20%22x1%22%3A%20float(x1)%2C%20%22x2%22%3A%20float(x2)%2C%0A%20%20%20%20%20%20%20%20%22prob_sel%22%3A%20prob_sel%20*%20100%2C%20%22gl%22%3A%20int(gl)%2C%0A%20%20%20%20%20%20%20%20%22seq%22%3A%20f%22%7Bgl%7D-%7Bx1%7D-%7Bx2%7D%22%2C%0A%20%20%20%20%7D%0A%20%20%20%20widget.payload_json%20%3D%20json.dumps(payload)%0A%20%20%20%20mo.show_code(position%3D%22below%22)%0A%20%20%20%20return%20(gl%2C)%0A%0A%0A%40app.cell%0Adef%20_(chi2%2C%20np%2C%20pd)%3A%0A%20%20%20%20probabilidades_alfa%20%3D%20%5B0.99%2C%200.975%2C%200.95%2C%200.90%2C%200.10%2C%200.05%2C%200.025%2C%200.01%5D%0A%20%20%20%20colunas_chi%20%3D%20%5Bf%22%CE%B1%20%3D%20%7Bp%7D%22%20for%20p%20in%20probabilidades_alfa%5D%0A%20%20%20%20linhas_gl_chi%20%3D%20list(range(1%2C%2031))%0A%0A%20%20%20%20def%20calcula_tabela_chi()%3A%0A%20%20%20%20%20%20%20%20dados%20%3D%20np.zeros((len(linhas_gl_chi)%2C%20len(probabilidades_alfa)))%0A%20%20%20%20%20%20%20%20for%20i%2C%20g%20in%20enumerate(linhas_gl_chi)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20for%20j%2C%20alpha%20in%20enumerate(probabilidades_alfa)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20dados%5Bi%2C%20j%5D%20%3D%20chi2.ppf(1%20-%20alpha%2C%20df%3Dg)%0A%20%20%20%20%20%20%20%20return%20pd.DataFrame(dados%2C%20index%3Dlinhas_gl_chi%2C%20columns%3Dcolunas_chi)%0A%0A%20%20%20%20tabela_chi%20%3D%20calcula_tabela_chi()%0A%20%20%20%20return%20linhas_gl_chi%2C%20tabela_chi%0A%0A%0A%40app.cell%0Adef%20_(gl%2C%20linhas_gl_chi%2C%20mo%2C%20pd%2C%20tabela_chi)%3A%0A%20%20%20%20def%20destaca_linha(valor)%3A%0A%20%20%20%20%20%20%20%20return%20%22background-color%3A%20%23FFFF99%3B%22%20if%20gl%20in%20linhas_gl_chi%20else%20%22%22%0A%0A%20%20%20%20tabela_estilizada%20%3D%20tabela_chi.style.set_caption(%0A%20%20%20%20%20%20%20%20%22Tabela%20de%20Valores%20Cr%C3%ADticos%20de%20Qui-Quadrado%20(%C3%81rea%20%C3%A0%20Direita)%22%0A%20%20%20%20).format(%22%7B%3A.4f%7D%22).set_table_styles(%0A%20%20%20%20%20%20%20%20%5B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7B%22selector%22%3A%20%22th%2C%20td%22%2C%20%22props%22%3A%20%5B(%22border%22%2C%20%221px%20solid%20black%22)%2C%20(%22text-align%22%2C%20%22center%22)%2C%20(%22padding%22%2C%20%225px%22)%5D%7D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%7B%22selector%22%3A%20%22caption%22%2C%20%22props%22%3A%20%5B(%22font-weight%22%2C%20%22bold%22)%2C%20(%22font-size%22%2C%20%2214px%22)%5D%7D%2C%0A%20%20%20%20%20%20%20%20%5D%0A%20%20%20%20).map(destaca_linha%2C%20subset%3Dpd.IndexSlice%5B%5Bgl%5D%20if%20gl%20in%20linhas_gl_chi%20else%20%5B%5D%2C%20%3A%5D)%0A%20%20%20%20mo.show_code(tabela_estilizada%2C%20position%3D%22below%22)%0A%20%20%20%20return%0A%0A%0Aif%20__name__%20%3D%3D%20%22__main__%22%3A%0A%20%20%20%20app.run()%0A</marimo-code></head>
+  <body>
+<style id="monitoria-nav-style">
+  #monitoria-nav {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: wrap;
+    padding: 10px 20px;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    position: relative;
+    z-index: 2147483000;
+  }
+  #monitoria-nav .brand {
+    font-weight: 700;
+    color: #1e293b;
+    margin-right: 18px;
+    text-decoration: none;
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+  #monitoria-nav a.nb-link {
+    text-decoration: none;
+    color: #475569;
+    font-size: 0.88rem;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: background 0.15s, color 0.15s;
+  }
+  #monitoria-nav a.nb-link:hover {
+    background: #eef2ff;
+    color: #2563eb;
+  }
+  #monitoria-nav a.nb-link.active {
+    background: #2563eb;
+    color: #ffffff;
+    font-weight: 600;
+  }
+  #monitoria-nav .spacer { flex: 1 1 auto; }
+  #monitoria-nav .hint {
+    font-size: 0.78rem;
+    color: #94a3b8;
+    white-space: nowrap;
+  }
+</style>
+<nav id="monitoria-nav"><a class="brand" href="../">📊 Monitoria de Estatística UTFPR</a><a class="nb-link" href="../TLC/">Teorema Central do Limite</a><a class="nb-link" href="../tStudent/">Distribuição t-Student</a><a class="nb-link" href="../LeiGrandesNumeros/">Lei dos Grandes Números</a><a class="nb-link" href="../NormalPadrao/">Normal Padrão (Z)</a><a class="nb-link" href="../Logistico5Par/">Logístico 5 Parâmetros</a><a class="nb-link" href="../Gaussiana/">Normal (μ, σ ajustáveis)</a><a class="nb-link active" href="../Qui2/">Qui-Quadrado (χ²)</a><a class="nb-link" href="../TLC-fastcode/">TLC (fix show_code)</a><a class="nb-link" href="../TLC-canvas/">TLC (canvas JS)</a><span class="spacer"></span><span class="hint">roda 100% no seu navegador — sem servidor</span></nav>
+    <div id="root"></div>
+    <script data-marimo="true">
+      Object.defineProperty(window, "__MARIMO_MOUNT_CONFIG__", {
+        value: Object.freeze({
+            "filename": "notebook.py",
+            "cwd": "",
+            "lspWorkspace": null,
+            "mode": "read",
+            "version": "0.25.2",
+            "serverToken": "unused",
+            "config": {"ai": {"allow_provider_config": true, "custom_providers": {}, "enabled": true, "models": {"custom_models": [], "displayed_models": []}}, "completion": {"activate_on_typing": true, "auto_close_pairs": true, "copilot": false, "signature_hint_on_typing": false}, "diagnostics": {"sql_linter": true}, "display": {"cell_output": "below", "code_editor_font_size": 14, "code_lens": true, "dataframes": "rich", "default_table_max_columns": 50, "default_table_page_size": 10, "default_width": "medium", "reference_highlighting": true, "theme": "light"}, "formatting": {"line_length": 79}, "keymap": {"overrides": {}, "preset": "default"}, "language_servers": {"pylsp": {"enable_flake8": false, "enable_mypy": true, "enable_pydocstyle": false, "enable_pyflakes": false, "enable_pylint": false, "enable_ruff": true, "enabled": false}}, "mcp": {"mcpServers": {}, "presets": []}, "package_management": {"manager": "pip"}, "runtime": {"auto_instantiate": false, "auto_reload": "off", "default_csv_encoding": "utf-8", "default_sql_output": "auto", "on_cell_change": "autorun", "output_max_bytes": 8000000, "reactive_tests": true, "show_tracebacks": false, "std_stream_max_bytes": 1000000, "watcher_on_save": "lazy"}, "save": {"autosave": "off", "autosave_delay": 1000, "format_on_save": false}, "server": {"browser": "default", "follow_symlink": false}, "snippets": {"custom_paths": [], "include_default_snippets": true}},
+            "configOverrides": {},
+            "appConfig": {"sql_output": "auto", "width": "medium"},
+            "layout": null,
+            "view": {"showAppCode": false},
+            "notebook": null,
+            "session": null,
+            "runtimeConfig": null
+        }),
+        writable: false,
+        configurable: false,
+      });
+    </script>
+  </body>
+</html>
