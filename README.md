@@ -69,7 +69,8 @@ marimo export html-wasm notebooks/<Nome>_marimo.py -o /tmp/export_<Nome> --offli
    compartilhados do Pyodide (`docs/_pyodide-assets/`) em vez de duplicar esse runtime em cada notebook.
 3. Se for um notebook novo, adicione uma entrada no dicionário `NOTEBOOKS` em `inject_nav.py`. Depois rode
    `python inject_nav.py docs/<slug>/index.html <slug>` para **cada** slug já publicado (não só o novo), para
-   que a barra de navegação compartilhada apareça atualizada em todas as páginas.
+   que a barra de navegação compartilhada apareça atualizada em todas as páginas (esse mesmo passo também
+   mantém a tela de carregamento de cada página correta, então rode-o mesmo que só a navegação tenha mudado).
 4. Se for um notebook novo, adicione também um link em `docs/index.html`.
 5. `git add -A && git commit -m "..." && git push` — o GitHub Pages republica automaticamente em cerca de 1
    minuto a partir da pasta `docs/` na branch `main`.
