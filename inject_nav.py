@@ -73,11 +73,6 @@ NAV_CSS = """
     font-weight: 600;
   }
   #monitoria-nav .spacer { flex: 1 1 auto; }
-  #monitoria-nav .hint {
-    font-size: 0.78rem;
-    color: #94a3b8;
-    white-space: nowrap;
-  }
 </style>
 """
 
@@ -171,7 +166,6 @@ def build_nav_html(current_slug: str) -> str:
         + '<a class="brand" href="../">📊 Monitoria de Estatística UTFPR</a>'
         + "".join(links)
         + '<span class="spacer"></span>'
-        + '<span class="hint">roda 100% no seu navegador — sem servidor</span>'
         + "</nav>"
     )
 
